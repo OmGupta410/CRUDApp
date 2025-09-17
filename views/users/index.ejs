@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<h2>All users</h2>
+<table>
+<thead>
+<tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr>
+</thead>
+<tbody>
+<% users.forEach(user => { %>
+<tr>
+<td><a href="/users/<%= user._id %>"><%= user.name %></a></td>
+<td><%= user.email %></td>
+<td><%= user.role %></td>
+<td>
+<a href="/users/<%= user._id %>/edit">Edit</a>
+<form action="/users/<%= user._id %>?_method=DELETE" method="POST"
+style="display:inline">
+<button type="submit" onclick="return confirm('Delete?')">Delete</
+button>
+
+</form>
+</td>
+</tr>
+<% }) %>
+</tbody>
+</table>
