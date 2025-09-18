@@ -14,15 +14,15 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/login',(req,res)=>{
-    res.render('../views/users/login.ejs');
-})
 
+// router.get('/login',(req,res)=>{
+//     res.render('./views/users/login.ejs');
+// })
 
 //NEW SHOW FORM
-router.get("/new", (req, res) => {
-  res.render("users/new");
-});
+// router.get("/new", (req, res) => {
+//   res.render("users/new");
+// });
 
 //add user
 

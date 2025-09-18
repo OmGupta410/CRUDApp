@@ -39,8 +39,10 @@ app.get('/',(req,res)=>{
 
 //root redirect
 app.get('/login',(req,res)=>{
-    res.render('./views/users/login');
+    res.render('users/login');
 })
+
+
 
 app.post('/login', async (req, res) => {
   try {
