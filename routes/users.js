@@ -14,6 +14,11 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get('/login',(req,res)=>{
+    res.render('../views/users/login.ejs');
+})
+
+
 //NEW SHOW FORM
 router.get("/new", (req, res) => {
   res.render("users/new");
@@ -23,8 +28,8 @@ router.get("/new", (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { name, email, role } = req.body;
-    const user = new User({ name, email, role });
+    const { name, email, role,password } = req.body;
+    const user = new User({ name, email, role, password });
     await user.save();
     res.redirect("/users");
   } catch (err) {
@@ -35,7 +40,7 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const { name, email, role } = req.body;
+    const { name, email, role, password} = req.body;
     // FIX: Pass the ID, the update object, and then the options
     await User.findByIdAndUpdate(req.body.id,
       { name, email, role },
@@ -71,7 +76,7 @@ router.get("/:id/edit", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const { name, email, role } = req.body;
-    const user = await User.findByIdAndUpdate({ name, email, role }, {new:true,runValidators:true});
+    const user = await User.findByIdAndUpdate({ name, email, role, password }, {new:true,runValidators:true});
 
     res.redirect("/users");
   } catch (err) {
